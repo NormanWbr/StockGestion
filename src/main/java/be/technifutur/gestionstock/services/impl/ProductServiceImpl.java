@@ -1,9 +1,10 @@
-package be.technifutur.gestionstock.services;
+package be.technifutur.gestionstock.services.impl;
 
 import be.technifutur.gestionstock.model.dto.ProductDTO;
 import be.technifutur.gestionstock.model.entity.Product;
 import be.technifutur.gestionstock.model.form.ProductForm;
 import be.technifutur.gestionstock.repository.ProductRepository;
+import be.technifutur.gestionstock.services.ProductService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
