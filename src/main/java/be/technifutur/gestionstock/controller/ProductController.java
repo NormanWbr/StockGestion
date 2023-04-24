@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/stock")
+@CrossOrigin("*")
 public class ProductController {
 
     private final ProductService _productService;
@@ -17,28 +18,31 @@ public class ProductController {
         this._productService = _productService;
     }
 
-    @CrossOrigin("*")
+    //@CrossOrigin("*")
     @GetMapping("/all")
     List<ProductDTO> getAll(){
-        return null;
+        return _productService.getAllProducts();
     }
 
-    @CrossOrigin("*")
+
+    //@CrossOrigin("*")
     @PostMapping("/create")
     void create(@RequestBody ProductForm form){
         _productService.createProduct(form);
     }
-    @CrossOrigin("*")
+    //@CrossOrigin("*")
     @PostMapping("/delete/{id}")
     void delete(@PathVariable("id")  Long id){
         _productService.deleteProduct(id);
     }
 
-    @CrossOrigin("*")
-    @PatchMapping("/update")
-    ProductDTO update(Long id, int quantity){
-        return null;
+    //@CrossOrigin("*")
+    @PatchMapping("/update/{id}")
+    ProductDTO update(@PathVariable  Long id, @RequestBody ProductForm form){
+        return _productService.updateProduct(id,form);
     }
+
+
 
 
 
