@@ -46,6 +46,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDTO updateProduct(Long id, ProductForm form) {
         Product product = productRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        product.setId(product.getId());
         product.setName(form.getName());
         product.setQuantity(form.getQuantity());
         return ProductDTO.builder().name(product.getName()).quantity(product.getQuantity()).build();
