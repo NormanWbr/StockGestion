@@ -32,14 +32,14 @@ public class ProductController {
 
     //@CrossOrigin("*")
     @PostMapping("/create")
-    void create(@RequestBody ProductForm form) {
-        _productService.createProduct(form);
+    ProductDTO create(@RequestBody ProductForm form) {
+        return _productService.createProduct(form);
     }
 
     //@CrossOrigin("*")
     @PostMapping("/delete/{id}")
-    void delete(@PathVariable("id") Long id) {
-        _productService.deleteProduct(id);
+    ProductDTO delete(@PathVariable("id") Long id) {
+        return _productService.deleteProduct(id);
     }
 
     //@CrossOrigin("*")

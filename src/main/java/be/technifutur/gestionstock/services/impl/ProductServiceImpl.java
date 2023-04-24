@@ -20,9 +20,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void createProduct(ProductForm productForm) {
+    public ProductDTO createProduct(ProductForm productForm) {
         Product product = productForm.toEntity();
         productRepository.save(product);
+        return ProductDTO.toDTO(product);
     }
 
     @Override
@@ -38,18 +39,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteProduct(Long id) {
+    public ProductDTO deleteProduct(Long id) {
         Product product = productRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         productRepository.delete(product);
+        return ProductDTO.toDTO(product);
     }
 
     @Override
     public ProductDTO updateProduct(Long id, ProductForm form) {
         Product product = productRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-        product.setId(product.getId());
         product.setName(form.getName());
         product.setQuantity(form.getQuantity());
-        return ProductDTO.builder().name(product.getName()).quantity(product.getQuantity()).build();
+        productRepository.save(product);
+        return ProductDTO.toDTO(product);
     }
 
 }

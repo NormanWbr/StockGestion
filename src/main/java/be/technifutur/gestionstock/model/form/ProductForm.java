@@ -10,13 +10,15 @@ public class ProductForm {
     @NotNull
     private String name;
 
-    @NotNull
     private Integer quantity;
+
+    private Integer price;
 
     public Product toEntity() {
         Product product = new Product();
         product.setName(this.name);
         product.setQuantity(this.quantity);
+        product.setPrice(this.price);
         return product;
     }
 
