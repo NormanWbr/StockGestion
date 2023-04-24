@@ -50,6 +50,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         product.setName(form.getName());
         product.setQuantity(form.getQuantity());
+        product.setPrice(form.getPrice());
         productRepository.save(product);
         return ProductDTO.toDTO(product);
     }
