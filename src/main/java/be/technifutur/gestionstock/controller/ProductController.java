@@ -18,28 +18,34 @@ public class ProductController {
     }
 
     @CrossOrigin("*")
+    @GetMapping("/{id}")
+    ProductDTO getOne(@PathVariable("id") Long id) {
+        return _productService.getProduct(id);
+    }
+
+    @CrossOrigin("*")
     @GetMapping("/all")
-    List<ProductDTO> getAll(){
+    List<ProductDTO> getAll() {
         return null;
     }
 
     @CrossOrigin("*")
     @PostMapping("/create")
-    void create(@RequestBody ProductForm form){
+    void create(@RequestBody ProductForm form) {
         _productService.createProduct(form);
     }
+
     @CrossOrigin("*")
     @PostMapping("/delete/{id}")
-    void delete(@PathVariable("id")  Long id){
+    void delete(@PathVariable("id") Long id) {
         _productService.deleteProduct(id);
     }
 
     @CrossOrigin("*")
     @PatchMapping("/update")
-    ProductDTO update(Long id, int quantity){
+    ProductDTO update(Long id, int quantity) {
         return null;
     }
-
 
 
 }
